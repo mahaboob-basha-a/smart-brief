@@ -1,6 +1,6 @@
 {
     "manifest_version":3,
-    "version":"1.0",
+    "version":"1.10",
     "name":"Smart Brief ",
     "description":"Summarize Web Articles into Brief, Bullets, or Detailed",
     "permissions":["scripting","storage","activeTab"],

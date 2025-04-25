@@ -1,104 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>SmartBrief </title>
-    <style>
-        
-        body{
-            min-height: 300px;
-            min-width: 500px;
-            font-family: Arial, Helvetica, sans-serif;
-            padding: 14px;
-        }
-        #options{
-            width: 400px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+  <meta charset="UTF-8" />
+  <title>SmartBrief</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-            #summery-type{
-                outline: none;
-                border: 1px solid #9e9e9e;
-                border-radius: 4px;
-                padding: 4px 14px;
-            }
-            button{
-                border: 0;
-                border-radius: 4px;
-                font-weight: bold;
-                padding: 6px 14px;
-                color: white;
-                font-size: 14px;
-                cursor: pointer;
-            }
-            #summerize:hover{
-                background-color: #0755c9;
-            }
-            #copy-btn:hover{
-                background-color: #009c00;
-            }
-            #summerize{
-                background-color: #0567fa;
-            }
-            #copy-btn{
-                background-color: #00d200;
-            }
-        }
-        #result{
-            padding: 10px;
-            border: 1px solid #cccaca;
-            border-radius: 4px;
-            min-height: 150px;
-            max-height: 400px;
-            word-wrap: wrap;
-            line-height: 1.5;
-            overflow: auto;
-            color: #000;
-            ul{
-                padding-left: 16px;
-                li{
-                    margin-bottom: 8px;
-                }
-            }
-        }
-        .loading{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 140px;
-        }
-        .loader{
-            border: 4px solid #c3c3c3;
-            border-top: 4px solid #0567fa;
-            background-color: white;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            animation: spin linear 1s infinite;
+    body {
+      min-width: 400px;
+      max-width: 500px;
+      margin: 0;
+      padding: 16px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f9f9f9;
+      color: #111;
+    }
 
-        }
-        @keyframes spin {
-            0%{
-                transform: rotate(0deg);
-            }
-            100%{
-                transform: rotate(360deg);
-            }
-        }
-    </style>
+    h2 {
+      margin-bottom: 12px;
+      font-size: 20px;
+      color: #0567fa;
+    }
+
+    #options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 16px;
+      outline: none;
+    }
+
+    #summery-type {
+      flex: 1;
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      flex-shrink: 0;
+      padding: 6px 14px;
+      font-weight: bold;
+      font-size: 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+      transition: background-color 0.2s;
+    }
+
+    #summerize {
+      background-color: #0567fa;
+    }
+
+    #summerize:hover {
+      background-color: #0755c9;
+    }
+
+    #copy-btn {
+      background-color: #00b300;
+    }
+
+    #copy-btn:hover {
+      background-color: #009c00;
+    }
+
+    #result {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 12px;
+      min-height: 150px;
+      max-height: 300px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 120px;
+    }
+
+    .loader {
+      width: 30px;
+      height: 30px;
+      border: 4px solid #ddd;
+      border-top: 4px solid #0567fa;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #suggestions {
+      margin-top: 12px;
+      font-size: 13px;
+      color: #666;
+      font-style: italic;
+    }
+  </style>
 </head>
 <body>
-    <h2>AI SmartBrief Summery</h2>
-    <div id="options">
-        <select id="summery-type">
-            <option value="brief">Brief</option>
-            <option value="detailed">Detailed</option>
-            <option value="bullets">Bullet Points</option>
-        </select>
-        <button id="summerize">Summerize</button>
-        <button id="copy-btn">Copy</button>
-    </div>
-    <pre id="result">Select a type and click summerize...</pre>
-    <script src="popup.js"></script>
+  <h2>AI SmartBrief Summary</h2>
+  <div id="options">
+    <select id="summery-type">
+      <option value="brief">Brief</option>
+      <option value="detailed">Detailed</option>
+      <option value="bullets">Bullet Points</option>
+    </select>
+    <button id="summerize">Summarize</button>
+    <button id="copy-btn">Copy</button>
+  </div>
+
+  <pre id="result">Select a type and click summarize...</pre>
+
+  <div id="suggestions">
+    <!-- Future: Suggested improvements or questions from AI -->
+  </div>
+
+  <script src="popup.js"></script>
 </body>
 </html>
