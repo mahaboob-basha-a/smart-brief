@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SmartBrief </title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20x;
+        }
+        h1{
+            color: #0567fa;
+        }
+        .form-group{
+            margin-bottom: 20px;
+        }
+        label{
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"]{
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            outline: none;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button{
+            border: 0;
+            border-radius: 4px;
+            font-weight: bold;
+            padding: 6px 14px;
+            color: white;
+            font-size: 14px;
+            cursor: pointer;
+            background-color: #0567fa;
+            }
+        button:hover{
+            background-color: #0352c9;
+        }
+        .success-message{
+            color: green;
+            margin-top: 10px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>AI Summery Settings</h1>
+    <div class="form-group">
+        <label for="api-key">Gemini API Key</label>
+        <input type="text" id="api-key" placeholder="Enter your Gemini API key" />
+        <p>
+            You can get an API key from <a href="https://aistudio.google.com/app/apikey" target="_blank">Google AI Studio</a>
+        </p>
+    </div>
+    <button id="save-btn">Save Settings</button>
+    <p id="success-message" class="success-message">Settings saved successfully</p>
+    <script src="options.js"></script>
+</body>
+</html>

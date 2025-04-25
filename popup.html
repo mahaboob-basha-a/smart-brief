@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>SmartBrief </title>
+    <style>
+        
+        body{
+            min-height: 300px;
+            min-width: 500px;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 14px;
+        }
+        #options{
+            width: 400px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            #summery-type{
+                outline: none;
+                border: 1px solid #9e9e9e;
+                border-radius: 4px;
+                padding: 4px 14px;
+            }
+            button{
+                border: 0;
+                border-radius: 4px;
+                font-weight: bold;
+                padding: 6px 14px;
+                color: white;
+                font-size: 14px;
+                cursor: pointer;
+            }
+            #summerize:hover{
+                background-color: #0755c9;
+            }
+            #copy-btn:hover{
+                background-color: #009c00;
+            }
+            #summerize{
+                background-color: #0567fa;
+            }
+            #copy-btn{
+                background-color: #00d200;
+            }
+        }
+        #result{
+            padding: 10px;
+            border: 1px solid #cccaca;
+            border-radius: 4px;
+            min-height: 150px;
+            max-height: 400px;
+            word-wrap: wrap;
+            line-height: 1.5;
+            overflow: auto;
+            color: #000;
+            ul{
+                padding-left: 16px;
+                li{
+                    margin-bottom: 8px;
+                }
+            }
+        }
+        .loading{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 140px;
+        }
+        .loader{
+            border: 4px solid #c3c3c3;
+            border-top: 4px solid #0567fa;
+            background-color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            animation: spin linear 1s infinite;
+
+        }
+        @keyframes spin {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>AI SmartBrief Summery</h2>
+    <div id="options">
+        <select id="summery-type">
+            <option value="brief">Brief</option>
+            <option value="detailed">Detailed</option>
+            <option value="bullets">Bullet Points</option>
+        </select>
+        <button id="summerize">Summerize</button>
+        <button id="copy-btn">Copy</button>
+    </div>
+    <pre id="result">Select a type and click summerize...</pre>
+    <script src="popup.js"></script>
+</body>
+</html>
