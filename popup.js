@@ -2,7 +2,7 @@
     const summarizeBtn = document.getElementById("summerize");
     const copyBtn = document.getElementById("copy-btn");
     const resultBox = document.getElementById("result");
-    const suggestionsBox = document.getElementById("suggestions");
+    const settingsBtn = document.getElementById("settings-btn");
   
     const renderLoading = () => {
       resultBox.innerHTML = `<div class="loading"><div class="loader"></div></div>`;
@@ -24,12 +24,6 @@
       } else {
         resultBox.textContent = summary;
       }
-  
-      // Update suggestions
-      suggestionsBox.innerHTML = `
-        💡 <strong>Tip:</strong> Try a different type for another view — brief, detailed, or bullets.<br />
-        📌 You can also follow up with your own questions in a future update!
-      `;
     };
   
     const getGeminiSummary = async (rawText, type, apiKey) => {
@@ -78,6 +72,11 @@
       if (!content) throw new Error("No summary returned.");
       return content.trim();
     };
+
+    settingsBtn.addEventListener("click",()=>{
+      chrome.tabs.create({url: "options.html"});
+      return;
+    })
   
     summarizeBtn.addEventListener("click", () => {
       const type = document.getElementById("summery-type").value;
@@ -86,6 +85,7 @@
       chrome.storage.sync.get(["geminiApiKey"], ({ geminiApiKey }) => {
         if (!geminiApiKey) {
           renderError("Missing API Key. Please set it in extension settings.");
+          chrome.tabs.create({url: 'options.html'})
           return;
         }
   
@@ -93,7 +93,7 @@
           chrome.tabs.sendMessage(tab.id, { type: "GET_ARTICLE_TEXT" }, async (res) => {
             const text = res?.text;
             if (!text) {
-              renderError("Couldn't extract readable content from this page.");
+              renderError("Couldn't extract readable content from this page. Refresh the page or try another News Page.");
               return;
             }
   
